@@ -8,17 +8,26 @@ import riot from 'riot'
 import './tags/app.tag'
 
 // Modules
-import Devtools from 'cerebral-module-devtools'
-import Dashboard from './modules/Dashboard'
+import devtools from 'cerebral-module-devtools'
+import dashboard from './modules/dashboard'
+
+// Signals
+import goTo from './signals/goTo'
 
 const stateRoot = {
-  version: '1.0'
+  version: '1.0',
+  content: 'overview'
 }
 
 const controller = Controller(Model(stateRoot))
+
+controller.addSignals({
+  goTo
+})
+
 controller.addModules({
-  devtools: Devtools(),
-  dashboard: Dashboard()
+  devtools: devtools(),
+  dashboard: dashboard()
 })
 
 riot.mixin(createCerebralMixin(controller))
