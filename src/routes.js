@@ -1,17 +1,21 @@
+import dashboardOpened from "./modules/dashboard/signals/dashboardOpened"
 
 const routeConfig = [
   {
     label: 'Overview',
     name: 'overview',
-    url: '/'
+    url: '/',
+    signal: ()=>{}
   },{
     label: 'Dashboard',
     name: 'dashboard',
-    url: '/dashboard'
+    url: '/dashboard',
+    signal: dashboardOpened
   },{
     label: 'Settings',
     name: 'settings',
-    url: '/settings'
+    url: '/settings',
+    signal: ()=>{}
   }
 ]
 

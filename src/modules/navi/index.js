@@ -1,6 +1,6 @@
 function makeRouteSignals(routes) {
   return routes.reduce((signals, route) => {
-    signals[route.name] = [({state}) => state.set('content', route.name)]
+    signals[route.name] = [function setContent({state}){state.set('content', route.name)}, ...route.signal]
     return signals
   }, {})
 }
