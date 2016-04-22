@@ -10,6 +10,7 @@ import routes from './routes'
 
 // Modules
 import devtools from 'cerebral-module-devtools'
+import http from 'cerebral-module-http'
 import router from 'cerebral-module-router'
 import navi from './modules/navi'
 import dashboard from './modules/dashboard'
@@ -24,6 +25,7 @@ const controller = Controller(Model(stateRoot))
 
 controller.addModules({
   devtools: devtools(),
+  http: http(),
   navi: navi(routes.config),
   router: router(routes.map),
   dashboard: dashboard()

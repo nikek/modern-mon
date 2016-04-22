@@ -23,6 +23,11 @@ module.exports = {
     },
     devServer: {
       port: 5555,
-      historyApiFallback: true
+      historyApiFallback: true,
+      proxy: {
+        '/heroic/*': {
+          target: 'http://mon'
+        }
+      }
     }
 }
