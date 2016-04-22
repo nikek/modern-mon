@@ -3,16 +3,17 @@ import './style.less'
 
 import Controller from 'cerebral'
 import Model from 'cerebral-model-baobab'
-import createCerebralMixin from 'cerebral-view-riot'
+import mixinFactory from 'cerebral-view-riot'
 import riot from 'riot'
 import './tags/app.tag'
+import routes from './routes'
 
 // Modules
 import devtools from 'cerebral-module-devtools'
+import router from 'cerebral-module-router'
+import navi from './modules/navi'
 import dashboard from './modules/dashboard'
 
-// Signals
-import goTo from './signals/goTo'
 
 const stateRoot = {
   version: '1.0',
@@ -21,14 +22,12 @@ const stateRoot = {
 
 const controller = Controller(Model(stateRoot))
 
-controller.addSignals({
-  goTo
-})
-
 controller.addModules({
   devtools: devtools(),
+  navi: navi(routes.config),
+  router: router(routes.map),
   dashboard: dashboard()
 })
 
-riot.mixin(createCerebralMixin(controller))
+riot.mixin(mixinFactory(controller))
 riot.mount('app')

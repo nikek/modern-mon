@@ -2,19 +2,18 @@
   <h1 class="mon-logo">Mon</h1>
   <nav>
     <ul>
-      <li class={active: active === 'overview'}><a href="#" name="overview" onclick={navigate}>Overview</a></li>
-      <li class={active: active === 'dashboard'}><a href="#" name="dashboard" onclick={navigate}>Dashboard</a></li>
-      <li class={active: active === 'settings'}><a href="#" name="settings" onclick={navigate}>Settings</a></li>
+      <li each={routes} class={active: active === name}>
+        <a href={url} onclick={navi[name]}>{label}</a>
+      </li>
     </ul>
   </nav>
 
   <script>
     this.connectCerebral({
-      active: ['content']
+      active: ['content'],
+      routes: ['navi', 'routes']
     }, {
-      goTo: ['goTo']
+      navi: ['navi']
     })
-
-    this.navigate = (e) => this.goTo({content: e.target.name})
   </script>
 </mon-nav>

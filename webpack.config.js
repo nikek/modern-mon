@@ -21,5 +21,8 @@ module.exports = {
         { test: /\.less$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader") }
       ]
     },
-    devServer: { port: 5555 }
+    devServer: {
+      port: 5555,
+      historyApiFallback: true
+    }
 }
