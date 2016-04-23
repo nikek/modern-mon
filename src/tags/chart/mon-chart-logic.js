@@ -1,5 +1,6 @@
 import d3 from 'd3'
 import _ from 'lodash'
+import utils from './mon-chart-utils'
 import setupNoData from './layers/noDataLayer'
 import setupAxis from './layers/axisLayer'
 import setupLines from './layers/lineLayer'
@@ -18,6 +19,7 @@ function MonChart() {
   };
 
   this.options = null;
+
   // group used for rendering things, will be at the bottom.
   this.rendering = null;
   this.overlay = null;
@@ -72,19 +74,20 @@ MonChart.prototype.configure = function(elem) {
   setupDots(this);
   setupAxis(this);
   // setupThreshold(this);
-  // setupHoverInspect(this);
+  setupHoverInspect(this);
   // setupCursor(this);
   setupNoData(this);
 
   // var listener = setupSelection(this);
+
+  // A top layer which broadcas
+  this.overlay = this.svg.append('g').append("rect").attr('fill', 'none')
+    .attr("class", "overlay");
   //
-  // this.overlay = this.svg.append('g').append("rect").attr('fill', 'none')
-  //   .attr("class", "overlay");
-  //
-  // this.overlay.on("mouseover",  this.trigger('mouseover'));
-  // this.overlay.on("mouseout", this.trigger('mouseout'));
-  // this.overlay.on("mousemove", this.trigger('mousemove'));
-  // this.overlay.on("keydown", this.trigger('keydown'));
+  this.overlay.on("mouseover",  this.trigger('mouseover'));
+  this.overlay.on("mouseout", this.trigger('mouseout'));
+  this.overlay.on("mousemove", this.trigger('mousemove'));
+  this.overlay.on("keydown", this.trigger('keydown'));
   //
   // this.overlay.call(listener);
 
@@ -287,11 +290,7 @@ MonChart.prototype.trigger = function(name) {
   };
 };
 
-const utils = {}
-utils.checkIfEmpty = function(series) {
-  var s = series.filter((s) => s.dataPoints.length)
-  return !s.length
-};
+
 
 MonChart.prototype.update = function(series) {
   this.series = series;
