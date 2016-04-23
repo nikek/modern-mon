@@ -1,5 +1,6 @@
 var webpack = require('webpack')
 var ExtractTextPlugin = require("extract-text-webpack-plugin")
+var hostname = require('./hostname')
 
 module.exports = {
     entry: { app: './src/index.js' },
@@ -26,7 +27,7 @@ module.exports = {
       historyApiFallback: true,
       proxy: {
         '/heroic/*': {
-          target: 'http://mon'
+          target: hostname
         }
       }
     }

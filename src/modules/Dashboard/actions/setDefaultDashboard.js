@@ -17,13 +17,25 @@ const tmpConfig = {
       dataConfig: {
 
       },
-      visOpt: {
-        type: 'chart'
-
+      options: { legendVisible: false, stacked: false, valueScale: 'linear', zeroBased: false },
+      layout: {
+        w: 6,
+        h: 4
       }
     },
     {
       title: 'CPU Usage',
+      options: {
+        type: 'chart',
+        legendVisible: false,
+        stacked: false,
+        valueScale: 'linear',
+        zeroBased: false
+      },
+      layout: {
+        w: 6,
+        h: 4
+      },
       dataConfig: {
         filter: [
           'and',
@@ -37,10 +49,6 @@ const tmpConfig = {
           sampling: { unit: 'hours', value: 1}
         }],
         range: { type: 'relative', unit: 'DAYS', value: 7 }
-      },
-      visOpt: {
-        type: 'chart'
-
       }
     }
   ]

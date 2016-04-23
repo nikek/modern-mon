@@ -41,3 +41,263 @@ input[type=tel] {
   border: 1px solid #ccc;
   line-height: 1.4em;
 }
+
+
+
+
+
+
+
+
+
+
+/// CHART
+// Color mixin
+.graph-color(@name, @color, @fg) {
+  .series.@{name} .color-text { color: @color; }
+  .series.@{name} .color-border { border-color: @color; }
+  .series.@{name} .color-bg { background-color: @color; }
+  .line.@{name} { stroke: @color; }
+  .fill.@{name} { stroke: darken(@color, 20%); stroke-width: 1; fill: @color; fill-opacity: 0.1; }
+  .bg.@{name} { background-color: @color; }
+  .text.@{name} { color: @color; }
+  .border.@{name} { border-color: @color; }
+  .area.@{name} { fill: @color; }
+  circle.dot.@{name} { fill: @color; &:hover {stroke: white} }
+  rect.dot.@{name} { fill: @color; &:hover {stroke: white} }
+  text.dot.@{name} { fill: @fg }
+}
+
+// Color classes
+// DARK
+.graph-color(e('white'), #fafafa, black);
+.graph-color(e('navy'), #086BFF, white);
+.graph-color(e('blue'), #00BFF1, white);
+.graph-color(e('teal'), #00D8AD, white);
+.graph-color(e('green'), #80E400, black);
+.graph-color(e('forest'), #00B849, white);
+.graph-color(e('yellow'), #DFE000, black);
+.graph-color(e('orange'), #FF9300, black);
+.graph-color(e('red'), #FF1010, white);
+.graph-color(e('pink'), #E90066, white);
+.graph-color(e('purple'), #B934F8, white);
+
+
+
+
+
+
+
+mon-chart-canvas {
+  display: block;
+
+  box-sizing: border-box;
+
+  width: 100%;
+  height: 100%;
+
+  cursor: crosshair;
+
+  g, line {
+    fill: none;
+  }
+
+  .line {
+    fill: none;
+    stroke-width: 1.5;
+
+    &.focus {
+      stroke-width: 3.0;
+    }
+
+    &.unfocus {
+      stroke: #999999;
+    }
+  }
+
+  .dot {
+    &.focus {
+    }
+
+    &.unfocus {
+      fill: #999999;
+    }
+  }
+
+  .stacked .area {
+    opacity: 0.65;
+  }
+
+
+  .axis path,
+  .axis line {
+    fill: none;
+  }
+
+  .y.axis path,
+  .x.axis path {
+    display: none;
+  }
+
+  .y.axis line,
+  .x.axis line {
+    shape-rendering: crispEdges;
+  }
+
+  .zoombar-drag-text {
+    font-size: 0.7em;
+    text-anchor: middle;
+    fill: #585858;
+    letter-spacing: 2px;
+  }
+
+  .brush .background {
+    fill: rgba(255,255,255, 0.1);
+  }
+
+  .overlay {
+    fill: none;
+    pointer-events: all;
+  }
+
+  .zoom-rectangle {
+    fill: rgba(255,255,255, 0.1);
+  }
+
+  .hover-inspect-focus {
+    circle {
+      stroke: #f0f0f0;
+      stroke-width: 1px;
+    }
+
+    text {
+      fill: #f0f0f0;
+    }
+  }
+}
+
+
+mon-chart {
+  display: block;
+  height: 100%;
+  position: relative;
+
+  border-radius: 0 0 8px 8px;
+  background-color: rgba(40,40,40, .7);
+
+  .hidden {
+    visibility: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+
+  .btn-icon {
+      color: white;
+  }
+
+  svg {
+    height: 100%;
+    width: 100%;
+  }
+
+  .hideAxes .axis {
+    display: none;
+    fill: white;
+  }
+
+  .graph-header {
+    overflow: hidden;
+    padding: 10px;
+
+    div.checkbox, div.form-group {
+      margin: 0 10px;
+    }
+  }
+
+  .graph-row {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .zoombar {
+    .brush {
+      .extent {
+        stroke: #fff;
+        fill: #fff;
+        fill-opacity: .125;
+        shape-rendering: crispEdges;
+      }
+
+      .resize {
+        fill: #fff;
+      }
+    }
+  }
+
+  .trans {
+    opacity: 0.3;
+  }
+
+  /* Range */
+
+  input[type="range"] {
+    background-image: linear-gradient(to right, hsla(0,0%,100%,.1) 45%, transparent 45%),
+                      linear-gradient(hsla(0,0%,0%,.1), hsla(0,0%,100%,.1)),
+                      linear-gradient(to right, #f66, #6cf);
+    background-size: 3px 3px, 100% 100%, 100% 100%;
+    border-radius: 25px;
+    box-shadow: inset 0 1px 4px hsla(0,0%,0%,.5),
+                inset 0 0 10px hsla(0,0%,0%,.5),
+                0 0 0 1px hsla(0,0%,0%,.1),
+                0 -1px 2px 1px hsla(0,0%,0%,.25),
+                0 2px 2px 1px hsla(0,0%,100%,.5),
+                0 -2px 10px 2px hsla(0,0%,100%,.75),
+                0 2px 10px 2px hsla(0,0%,0%,.25);
+    cursor: ew-resize;
+    height: 10px;
+    position: relative;
+    width: 100px;
+    -webkit-appearance: none;
+    transition: .15s;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    background-color: #eee;
+    background-image: linear-gradient(hsla(0,0%,100%,.1), hsla(0,0%,0%,.1));
+    border-radius: 25px;
+    box-shadow: inset 0 1px 1px 1px hsla(0,0%,100%,1),
+                inset 0 -1px 1px 1px hsla(0,0%,0%,.25),
+                0 1px 3px 1px hsla(0,0%,0%,.5),
+                0 0 2px hsla(0,0%,0%,.25);
+    content: '';
+    display: block;
+    height: 10px;
+    left: 0;
+    position: relative;
+    top: 0;
+    width: 10px;
+    -webkit-appearance: none;
+  }
+
+  .graph-fixed-height { height: 300px; }
+}
+
+
+.flex-container {
+  display: flex;
+}
+
+.graph-legend-small {
+  overflow-y: scroll;
+
+  &.list { padding:0; margin-bottom: 4px; margin-right: -15px; }
+
+  li {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  + mon-chart-canvas { min-width: 65%; flex:1; }
+}

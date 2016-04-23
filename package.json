@@ -38,6 +38,8 @@
     "cerebral-module-http": "^0.1.1",
     "cerebral-module-router": "^0.13.1",
     "cerebral-view-riot": "^0.1.0",
+    "d3": "^3.5.16",
+    "lodash": "^4.11.1",
     "riot": "^2.3.12"
   }
 }
