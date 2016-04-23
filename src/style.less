@@ -1,7 +1,13 @@
+* {
+  box-sizing: border-box;
+}
+
 html {
   font-family: 'Helvetica Neue', helvetica, arial, sans-serif;
   color: #444;
 }
+
+body { background-color: #1a1a1a; }
 
 // Removing 300ms tap delay on the following elements
 a, button, input, select, textarea, label, summary {
@@ -43,6 +49,75 @@ input[type=tel] {
 }
 
 
+
+
+
+
+
+
+.component {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 100%;
+  transition: all 400ms ease;
+
+  background-color: #202020;
+  border-radius: 8px 8px 0 8px;
+
+  &:hover {
+    .button-wrapper {
+      opacity: 1;
+    }
+  }
+
+  .title-wrapper {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    padding: 10px 50px 10px 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
+  }
+
+  .button-wrapper {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 10;
+    padding: 8px 3px 0 0;
+    border-radius: 0 8px 0 0;
+    opacity: 0;
+    transition: all 70ms ease-out;
+
+    button {
+      box-shadow: 0 0 5px rgba(0,0,0,0.25);
+      margin-right: 5px;
+    }
+  }
+
+  .graph-wrapper {
+    position: relative;
+    height: 100%;
+    transform: translateZ(0);
+
+    // apply to any graph components.
+    graph {
+      height: ~"calc(100% - 37px)";
+
+      graph-legend {
+        display: none;
+      }
+
+      // hide header to avoid annoyance.
+      .graph-header {
+        display: none;
+      }
+    }
+  }
+}
 
 
 

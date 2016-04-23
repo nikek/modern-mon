@@ -27,6 +27,7 @@ const tmpConfig = {
       title: 'CPU Usage',
       options: {
         type: 'chart',
+        axis: true,
         legendVisible: false,
         stacked: false,
         valueScale: 'linear',
