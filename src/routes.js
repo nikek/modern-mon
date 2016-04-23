@@ -4,16 +4,37 @@ const routeConfig = [
   {
     label: 'Overview',
     name: 'overview',
+    icon: '',
     url: '/',
     signal: ()=>{}
   },{
-    label: 'Dashboard',
+    label: 'Dashboards',
     name: 'dashboard',
+    icon: '',
     url: '/dashboard',
     signal: dashboardOpened
   },{
+    label: 'Alerts',
+    name: 'alert',
+    icon: '',
+    url: '/alert',
+    signal: ()=>{}
+  },{
+    label: 'Hosts',
+    name: 'Hosts',
+    icon: '',
+    url: '/Hosts',
+    signal: ()=>{}
+  },{
+    label: 'Oncall',
+    name: 'oncall',
+    icon: '',
+    url: '/oncall',
+    signal: ()=>{}
+  },{
     label: 'Settings',
     name: 'settings',
+    icon: '',
     url: '/settings',
     signal: ()=>{}
   }
