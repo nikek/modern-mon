@@ -1,7 +1,9 @@
+import './svg-icons.tag'
 import './mon-nav.tag'
 import './mon-content.tag'
 
 <app>
-  <nav data-is="mon-nav"></nav>
-  <main data-is="mon-content"></main>
+  <svg-icons></svg-icons>
+  <nav class="main-navbar" data-is="mon-nav"></nav>
+  <main class="main-content" data-is="mon-content"></main>
 </app>

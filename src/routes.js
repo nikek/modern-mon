@@ -2,39 +2,39 @@ import dashboardOpened from "./modules/dashboard/signals/dashboardOpened"
 
 const routeConfig = [
   {
-    label: 'Overview',
+    label: 'Home',
     name: 'overview',
-    icon: '',
+    icon: 'home',
     url: '/',
     signal: ()=>{}
   },{
     label: 'Dashboards',
     name: 'dashboard',
-    icon: '',
+    icon: 'dashboard',
     url: '/dashboard',
     signal: dashboardOpened
   },{
     label: 'Alerts',
     name: 'alert',
-    icon: '',
+    icon: 'bell',
     url: '/alert',
     signal: ()=>{}
   },{
     label: 'Hosts',
     name: 'Hosts',
-    icon: '',
+    icon: 'server',
     url: '/Hosts',
     signal: ()=>{}
   },{
     label: 'Oncall',
     name: 'oncall',
-    icon: '',
+    icon: 'contact_phone',
     url: '/oncall',
     signal: ()=>{}
   },{
     label: 'Settings',
     name: 'settings',
-    icon: '',
+    icon: 'settings',
     url: '/settings',
     signal: ()=>{}
   }

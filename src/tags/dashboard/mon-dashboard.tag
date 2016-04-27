@@ -6,7 +6,9 @@ import '../chart/mon-chart.tag'
     <article class="component" each={c, i in config.components}>
       <div class="title-wrapper">{c.title}</div>
       <div class="button-wrapper">
-        <button type="button" name="button" onclick={removeComponent}>Remove</button>
+        <button type="button" name="button" onclick={removeComponent}>
+          <svg-symbol link="icon-trash"></svg-symbol>
+        </button>
       </div>
       <div class="graph-wrapper">
         <mon-chart options={c.options} range={c.data.range} data={c.data.series}></mon-chart>

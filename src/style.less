@@ -49,7 +49,32 @@ input[type=tel] {
 }
 
 
+@navbar-width: 35px;
 
+.main-navbar {
+  width: @navbar-width;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: #232323;
+  // background: #225a33;
+  z-index: 10;
+  transition: all 150ms;
+
+  &:hover .nav-item:hover .nav-item-label {
+    opacity: 1;
+    transform: translate(40px, -23px);
+  }
+}
+
+.main-content {
+  margin-left: @navbar-width;
+  padding: 10px;
+  transition: all 150ms;
+}
 
 
 
@@ -375,4 +400,14 @@ mon-chart {
   }
 
   + mon-chart-canvas { min-width: 65%; flex:1; }
+}
+
+
+
+
+
+.icon {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
 }
