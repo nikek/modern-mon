@@ -21,7 +21,7 @@ const routeConfig = [
     signal: ()=>{}
   },{
     label: 'Hosts',
-    name: 'Hosts',
+    name: 'hosts',
     icon: 'server',
     url: '/Hosts',
     signal: ()=>{}

@@ -25,6 +25,7 @@ module.exports = {
     devServer: {
       port: 5555,
       historyApiFallback: true,
+      host: '0.0.0.0',            // reach app from network (test on devices)
       proxy: {
         '/heroic/*': {
           target: hostname

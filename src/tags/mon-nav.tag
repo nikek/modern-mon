@@ -1,49 +1,62 @@
 import './svg-symbol.tag'
 
-<mon-nav>
-  <h1 class="mon-logo">Mon</h1>
-  <ul class="nav-item-list">
-    <li each={routes} class="{active: active === name}">
-      <a href={url} onclick={navi[name]} class="nav-item">
-        <svg-symbol link="icon-{icon}"></svg-symbol>
-        <span class="nav-item-label">{label}</span>
-      </a>
-    </li>
-  </ul>
+<mon-nav class="vertical">
+  <a each={routes}
+    class="{active: active === name} nav-item"
+    href={url}
+    onclick={navi[name]}>
+    <svg-symbol link="icon-{icon}"></svg-symbol>
+    <span class="nav-item-label">{label}</span>
+  </a>
 
-  <style>
+  <style scoped type="less">
+    @import './src/style';
 
-    .mon-logo {
-      text-transform: lowercase;
-      font-family: monospace;
-      color: #26C17B;
-      font-weight: 400;
-      font-size: 10px;
-      margin: 0 auto;
+    :scope {
+      position: relative;
+      width: 40px;
+      height: 100vh;
+
+      display: flex;
+      flex-direction: column;
       text-align: center;
-      width: 100%;
 
-      background-color: currentColor;
+      background-color: @c-grayDarkest;
+      z-index: 10;
+
+      border-top: 3px solid @c-primary;
     }
 
-    .nav-item-list {
-      display: block;
-      width: 100%;
-      padding: 0;
-      list-style: none;
-      text-align: center;
+    .nav-item {
+      margin-top: 15px;
+      color: #888;
+      text-decoration: none;
+      position: relative;
     }
+    .nav-item:hover { color: #ddd; }
+
+    .nav-item.active { color: @c-primary; }
+    .nav-item.active:hover { color: @c-primary; }
 
     .nav-item-label {
       text-transform: uppercase;
       font-weight: 500;
       font-size: 11px;
+      line-height: 11px;
+      height: 11px;
       opacity: 0;
-      transition: all 150ms;
+      transition: opacity 150ms, transform 150ms;
       display: block;
       position: absolute;
-      transform: translate(30px, -23px);
+      top: 7px;
+      transform: translateX(50px);
+      transform-origin: center;
       pointer-events: none;
+    }
+
+    .global-info .nav-item:hover .nav-item-label {
+      opacity: 1;
+      transform: translateX(40px);
     }
 
     .icon {
@@ -51,16 +64,6 @@ import './svg-symbol.tag'
       height: 24px;
       margin-bottom: 1px;
     }
-
-    .nav-item {
-      color: #888;
-      text-decoration: none;
-    }
-    .nav-item:hover { color: #ddd; }
-
-    .active .nav-item { color: #26C17B; }
-    .active .nav-item:hover { color: #26C17B; }
-
 
     .nav-item-list li + li {
       margin: 13px 0 0 0;

@@ -13,6 +13,17 @@ import './settings/mon-settings.tag'
   <mon-oncall if={content === 'oncall'}></mon-oncall>
   <mon-settings if={content === 'settings'}></mon-settings>
 
+  <style scoped type="less">
+    @import './src/style';
+
+    :scope {
+      display: block;
+      flex: 1;
+      padding: 10px;
+      transition: all 150ms;
+    }
+  </style>
+
   <script>
     this.connectCerebral({content: ['content']})
   </script>

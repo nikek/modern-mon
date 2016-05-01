@@ -16,6 +16,10 @@ import '../chart/mon-chart.tag'
     </article>
   </div>
 
+  <style scoped>
+    :scope { display: block; }
+  </style>
+  
   <script>
     this.connectCerebral({
       config: ['dashboard', 'config']
