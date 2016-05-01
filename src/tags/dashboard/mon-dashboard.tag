@@ -1,6 +1,8 @@
 import '../chart/mon-chart.tag'
+import './mon-global-options.tag'
 
 <mon-dashboard>
+  <global-options></global-options>
   <h2>{config.meta.title}</h2>
   <div class="component-wrapper">
     <article class="component" each={c, i in config.components}>
