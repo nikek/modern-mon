@@ -18,7 +18,7 @@ import dashboard from './modules/dashboard'
 
 const stateRoot = {
   version: '1.0',
-  content: 'overview'
+  content: 'nothing'
 }
 
 const controller = Controller(Model(stateRoot))

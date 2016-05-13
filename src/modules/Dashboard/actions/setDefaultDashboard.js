@@ -40,10 +40,7 @@ const tmpConfig = {
       dataConfig: {
         filter: [
           'and',
-          ['=','role','riemann'],
-          ['=','host','sto3-riemann-a1.sto3.spotify.net'],
-          ['=','what','cpu-usage'],
-          ['=','cpu_type','user']
+          ['=','what','teleported-goats'],
         ],
         aggregators: [{
           type: 'average',
