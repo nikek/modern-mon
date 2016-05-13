@@ -1,6 +1,5 @@
 var webpack = require('webpack')
 var ExtractTextPlugin = require("extract-text-webpack-plugin")
-var hostname = require('./hostname')
 
 module.exports = {
     entry: { app: './src/index.js' },
@@ -28,7 +27,10 @@ module.exports = {
       host: '0.0.0.0',            // reach app from network (test on devices)
       proxy: {
         '/heroic/*': {
-          target: hostname
+          target: 'http://localhost:8080',
+          rewrite: function(req) {
+            req.url = req.url.replace(/^\/heroic/, '');
+          }
         }
       }
     }
