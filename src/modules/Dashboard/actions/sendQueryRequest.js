@@ -1,4 +1,4 @@
-export default function queryMetrics({state, input, output, services}) {
+export default function sendQueryRequest({state, input, output, services}) {
   const query = Object.assign({}, state.get('dashboard.config.components.1.dataConfig'))
 
   query.range = query.range || state.get('dashboard.config.globalOptions.range')

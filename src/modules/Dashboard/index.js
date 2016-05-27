@@ -1,3 +1,4 @@
+import queryMetrics from './signals/queryMetrics'
 import removeComponent from './signals/removeComponent'
 import setRange from './signals/setRange'
 
@@ -9,6 +10,7 @@ export default (options = {}) => {
     })
 
     module.addSignals({
+      queryMetrics: [queryMetrics],
       removeComponent,
       setRange
     })
