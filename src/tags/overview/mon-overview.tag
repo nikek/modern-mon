@@ -24,6 +24,8 @@
 
   <style scoped>
     :scope { display: block; }
+    .flex-container { display: flex; }
+    .flex1 { flex: 1; }
   </style>
 
   <script>
