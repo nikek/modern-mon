@@ -9,17 +9,17 @@ export default function setupNoData(ctrl) {
   noData.text('No Data');
 
   var reposition = function() {
-    if (!ctrl.isEmpty) {
-      noData.style('display', 'none');
-      return;
+    if (ctrl.isEmpty) {
+      const x = ctrl.width/2
+      const y = ctrl.height/2
+
+      noData
+        .attr('transform', `translate(${x}, ${y})`)
+        .style('display', null);
     }
-
-    const x = ctrl.width/2
-    const y = ctrl.height/2
-
-    noData
-      .attr('transform', `translate(${x}, ${y})`)
-      .style('display', null);
+    else {
+      noData.style('display', 'none');
+    }
   };
 
   ctrl.addRenderer(reposition);

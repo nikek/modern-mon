@@ -303,7 +303,7 @@ MonChart.prototype.update = function(series) {
   }
 
   this.yScale.domain(this.calculateYDomain());
-  this.isEmpty = utils.checkIfEmpty(series);
+  this.isEmpty = utils.checkIfEmpty(this.series);
   this.render();
 };
 

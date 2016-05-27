@@ -1,6 +1,6 @@
 function checkIfEmpty(series) {
-  for(let s of series) {
-    if(!s.dataPoints.length) return false
+  for(var i=0, len=series.length; i<len; i++) {
+    if(series[i].dataPoints.length) return false
   }
   return true
 }

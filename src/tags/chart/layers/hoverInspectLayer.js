@@ -162,7 +162,7 @@ export default function setupHoverInspect(ctrl) {
   });
 
   ctrl.on("mouseout", function() {
-    ctrl.highlightSeries(null);
+    // ctrl.highlightSeries(null);
     ctrl.disableHover();
   });
 
