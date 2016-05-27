@@ -7,8 +7,8 @@ const tmpConfig = {
   globalOptions: {
     range: {
       type: 'relative',
-      value: 1,
-      unit: 'DAYS'
+      value: 3,
+      unit: 'days'
     }
   },
   components: [

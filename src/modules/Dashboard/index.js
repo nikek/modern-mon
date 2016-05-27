@@ -1,4 +1,5 @@
 import removeComponent from './signals/removeComponent'
+import setRange from './signals/setRange'
 
 export default (options = {}) => {
   return (module, controller) => {
@@ -8,7 +9,8 @@ export default (options = {}) => {
     })
 
     module.addSignals({
-      removeComponent
+      removeComponent,
+      setRange
     })
 
   }
