@@ -8,7 +8,7 @@ const tmpConfig = {
     range: {
       type: 'relative',
       value: 1,
-      unit: 'weeks'
+      unit: 'DAYS'
     }
   },
   components: [
@@ -42,11 +42,9 @@ const tmpConfig = {
           'and',
           ['=','what','teleported-goats'],
         ],
-        aggregators: [{
-          type: 'average',
-          sampling: { unit: 'hours', value: 1}
-        }],
-        range: { type: 'relative', unit: 'DAYS', value: 7 }
+        aggregation: {
+          type: 'average'
+        }
       }
     }
   ]
