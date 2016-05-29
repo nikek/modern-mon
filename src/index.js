@@ -14,6 +14,7 @@ import http from 'cerebral-module-http'
 import router from 'cerebral-module-router'
 import navi from './modules/navi'
 import dashboard from './modules/dashboard'
+import dashboardList from './modules/dashboard-list'
 
 
 const stateRoot = {
@@ -28,6 +29,7 @@ controller.addModules({
   http: http(),
   navi: navi(routes.config),
   router: router(routes.map),
+  dashboardList: dashboardList(),
   dashboard: dashboard()
 })
 

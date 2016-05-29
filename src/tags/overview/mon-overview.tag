@@ -5,9 +5,12 @@
       <h3>Dashboards</h3>
       <ul>
         <li each={dash in dashboards}>
-          <span class="reorder-handle">...</span>
-          <span class="stats">&#9734;</span>
-          <span class="title">{dash.title}</span>
+          <a href="/dashboards/{dash.id}">
+            <span class="reorder-handle">...</span>
+            <span class="stats">&#9734;</span>
+            <span class="title">{dash.title}</span>
+            <span class="title">({dash.id})</span>
+          </a>
         </li>
       </ul>
     </div>
@@ -29,14 +32,8 @@
   </style>
 
   <script>
-    this.dashboards = [
-      { title: 'Heroic Slowness' },
-      { title: 'Heroic Slowness' },
-      { title: 'Heroic Slowness' },
-      { title: 'Heroic Slowness' },
-      { title: 'Heroic Slowness' },
-      { title: 'Heroic Slowness' },
-      { title: 'Heroic Slowness' }
-    ]
+    this.connectCerebral({
+      dashboards: ['dashboardList', 'list']
+    })
   </script>
 </mon-overview>
