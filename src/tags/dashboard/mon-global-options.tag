@@ -1,5 +1,5 @@
 import '../inputs/range-picker.tag'
-import rangeOptions from '../../data/input-options/range-options.js'
+import rangeOptions from '../../data/range-options.js'
 
 <global-options>
   <range-picker options="{rangeOptions}" current="{range}" on-pick="{onRangePick}"></range-picker>
